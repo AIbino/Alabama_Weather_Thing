@@ -1,4 +1,6 @@
 //
+// Program developed by Jeremiah Brewer & Gabriel Mendez-Frances
+//
 // This program prepares the Alabama weather data file by 
 // finding and removing bad data flags and filtering 
 // the data into a new file.
@@ -18,6 +20,8 @@ int main(void) {
 	int pos_tmax, pos_tmin, pos_prcp;
 	float f_tmax, f_tmin, f_prcp;
 	unsigned int i = 0, records = 0;
+
+	cout << "PROBLEM 1" << endl << endl;
 
 	cout << "Attempting to open AL_Weather_Station.txt..." << endl << endl;
 	weatherin.open("C:/Temp/AL_Weather_Station.txt");
@@ -44,7 +48,7 @@ int main(void) {
 
 	cout << "Attempting to find position of TMAX, TMIN, and PRCP columns..." << endl << endl;
 	getline(weatherin, dataline);
-	weatherout << dataline << endl;
+	weatherout << dataline << endl; 
 
 	pos_tmax = dataline.find("TMAX");
 	if (pos_tmax != string::npos) {
@@ -104,7 +108,8 @@ int main(void) {
 	}
 
 	cout << "Total number of valid weather data entries: " << records << endl << endl;
-	cout << "Closing files..." << endl;
+	
+	cout << "Closing files..." << endl << endl;
 	weatherin.close();
 	weatherout.close();
 
