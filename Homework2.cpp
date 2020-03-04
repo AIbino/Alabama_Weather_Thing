@@ -1,9 +1,7 @@
 //
 // Program developed by Jeremiah Brewer & Gabriel Mendez-Frances
 //
-// This program prepares the Alabama weather data file by 
-// finding and removing bad data flags and filtering 
-// the data into a new file.
+// This program narrows down the data from the filtered data file
 //
 
 #include <iostream>
@@ -56,7 +54,7 @@ int main(void) {
 	if (pos_stname != string::npos) {
 		cout << "The index of the STATION_NAME column is " << pos_stname << endl;
 	}
-	else 
+	else
 	{
 		cout << "Unable to find STATION_NAME" << endl << endl;
 		system("pause");
@@ -73,7 +71,7 @@ int main(void) {
 		system("pause");
 		return 2;
 	}
-	
+
 	pos_prcp = dataline.find("PRCP");
 	if (pos_prcp != string::npos) {
 		cout << "The index of the PRCP column is " << pos_prcp << endl;
@@ -128,10 +126,10 @@ int main(void) {
 		f_tmin = C2F(f_tmin);
 
 		//Output each important value to the output file
-		weatherout << left << setw(55) << s_stname 
-			<< setw(15) << s_date 
-			<< setw(10) << s_prcp 
-			<< setw(10) << f_tmax 
+		weatherout << left << setw(55) << s_stname
+			<< setw(15) << s_date
+			<< setw(10) << s_prcp
+			<< setw(10) << f_tmax
 			<< setw(10) << f_tmin << endl;
 
 		// Continuously scroll through each line of data
@@ -152,7 +150,7 @@ string leftAlignStringSpace(string replaceThis) {
 	int value = replaceThis.length();
 	bool nospace = 1;
 	for (int i = 0; i < value; i++) {
-		if (!nospace) 
+		if (!nospace)
 		{
 			replacedBy += replaceThis.at(i);
 		}
