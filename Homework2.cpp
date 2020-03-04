@@ -13,6 +13,7 @@
 
 using namespace std;
 string leftAlignStringSpace(string replaceThis);
+float C2F(float c_temp);
 
 int main(void) {
 	ifstream weatherin;
@@ -118,12 +119,20 @@ int main(void) {
 
 		s_stname = leftAlignStringSpace(s_stname);
 
+		// Converting temperatures from string to floats
+		f_tmax = stof(s_tmax);
+		f_tmin = stof(s_tmin);
+
+		// Coverting Celsius to Fahrenheit
+		f_tmax = C2F(f_tmax);
+		f_tmin = C2F(f_tmin);
+
 		//Output each important value to the output file
 		weatherout << left << setw(55) << s_stname 
 			<< setw(15) << s_date 
 			<< setw(10) << s_prcp 
-			<< setw(10) << s_tmax 
-			<< setw(10) << s_tmin << endl;
+			<< setw(10) << f_tmax 
+			<< setw(10) << f_tmin << endl;
 
 		// Continuously scroll through each line of data
 		getline(weatherin, dataline);
@@ -154,4 +163,10 @@ string leftAlignStringSpace(string replaceThis) {
 		}
 	}
 	return replacedBy;
+}
+
+float C2F(float c_temp) {
+	float f_temp;
+	f_temp = ((9.0 / 5.0) * c_temp) + 32.0;
+	return f_temp;
 }
