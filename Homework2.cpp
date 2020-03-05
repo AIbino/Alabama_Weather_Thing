@@ -118,8 +118,8 @@ int main(void) {
 		s_stname = leftAlignStringSpace(s_stname);
 
 		// Converting temperatures from string to floats
-		f_tmax = stof(s_tmax);
-		f_tmin = stof(s_tmin);
+		f_tmax = stof(s_tmax) / 10.00;
+		f_tmin = stof(s_tmin) / 10.00;
 
 		// Coverting Celsius to Fahrenheit
 		f_tmax = C2F(f_tmax);
@@ -129,8 +129,8 @@ int main(void) {
 		weatherout << left << setw(55) << s_stname
 			<< setw(15) << s_date
 			<< setw(10) << s_prcp
-			<< setw(10) << f_tmax
-			<< setw(10) << f_tmin << endl;
+			<< setw(10) << setprecision(2) << fixed << f_tmax
+			<< setw(10) << setprecision(2) << f_tmin << endl;
 
 		// Continuously scroll through each line of data
 		getline(weatherin, dataline);
